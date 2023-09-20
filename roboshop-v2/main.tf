@@ -44,7 +44,7 @@ resource "aws_instance" "instance" {
 
 }
 
-resource "aws_route53_record" "record" {
+resource "aws_route53_record" "records" {
   for_each = var.components
   zone_id = "Z023814724XBO8OK2PSWK"
   name    = "${lookup(each.value,"name",null )}.devops999.store"
