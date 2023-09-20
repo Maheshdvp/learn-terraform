@@ -1,4 +1,4 @@
-data "aws_ami" "ami" {
+data "aws_ami_ids" "ami" {
   name_regex = "centos-*"
-  owners = ["8328428660"]
+  owners = ["ami-03265a0778a880afb"]
 }
