@@ -38,14 +38,14 @@ resource "aws_instance" "instance" {
   vpc_security_group_ids= var.security_groups
 
   tags = {
-    Name = lookup(each.key["name"], null )
+    Name = var.components[each.key].name
   }
 }
 
 
-#output "test" {
-#  value = lookup(var.components,"frontend",null )
-#}
+output "test" {
+  value = lookup(var.components,"frontend","null" )
+}
 
 
 #output "instances" {
