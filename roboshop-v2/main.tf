@@ -41,14 +41,23 @@ resource "aws_instance" "instance" {
     //Name = var.components[each.key].name
     Name = lookup(each.value,"name",null )
   }
+
 }
 
-
+resource "aws_route53_record" "record" {
+  for_each = var.components
+  zone_id = "Z023814724XBO8OK2PSWK"
+  name    = "${lookup(each.value,"name",null )}.devops999.store"
+  type    = "A"
+  ttl     = 30
+  records = [lookup(lookup(aws_instance,each.key,null),"private_ip",null)]
+}
 output "test" {
   value = lookup(var.components,"frontend","null" )
 }
 
 
+#
 #output "instances" {
 #  value = aws_instance.instance
 #}
