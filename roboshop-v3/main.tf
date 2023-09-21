@@ -6,5 +6,4 @@ module "components" {
   security_groups = var.security_groups
   name            = each.value["name"]
   instance_type   = each.value["instance_type"]
-  ami_id          = each.value["ami_id"]
 }
